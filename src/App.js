@@ -13,6 +13,12 @@ function App() {
             label: 'Load time'
         }
         ReactGA.timing(data);
+        ReactGA.event({
+            category: 'User',
+            action: 'Button Click',
+            label: 'Send metrics to GA',
+            value: 1,
+        });
         console.log(data)
     }
   return (
