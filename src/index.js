@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('UA-195481126-2');
+ReactGA.initialize('UA-195481126-2', { debug: true, gaOptions: { siteSpeedSampleRate: 100 }});
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
