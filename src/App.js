@@ -1,19 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import ReactGA from 'react-ga';
 
 function App() {
+    const sendTiming = () => {
+        const perfData = window.performance.timing;
+        const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+        const data = {
+            category: 'Metrics',
+            variable: 'load',
+            value: pageLoadTime,
+            label: 'Load time'
+        }
+        ReactGA.timing(data);
+        console.log(data)
+    }
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={sendTiming}>Send metrics to GA</button>
       </header>
     </div>
   );
