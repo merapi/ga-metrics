@@ -5,6 +5,7 @@ import ReactGA from 'react-ga';
 function App() {
     const sendTiming = () => {
         const perfData = window.performance.timing;
+        const perfDataV2 = window.performance.getEntriesByType("navigation")[0];
         const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
         const data = {
             category: 'Metrics',
@@ -20,6 +21,7 @@ function App() {
             value: 1,
         });
         console.log(data)
+        console.log({perfData, perfDataV2})
     }
   return (
     <div className="App">
